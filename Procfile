@@ -1,1 +1,1 @@
-echo "hej"
+web: node server.js
