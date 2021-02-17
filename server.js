@@ -30,11 +30,12 @@ app.use(express.static(path.join(__dirname, 'react-ui/build')));
 app.use('/api', apiRouter);
 app.get('/apa', (req, res, next) => {
     console.log("apa")
+    res.sendStatus(200);
 });
 
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'react-ui/build', 'index.html'));
-});
+// app.get('*', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'react-ui/build', 'index.html'));
+// });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
