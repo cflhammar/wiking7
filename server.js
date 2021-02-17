@@ -18,17 +18,22 @@ app.use(morgan('dev'));
 //     app.use(express.static('react-ui/build'));
 
 //     // Express serve up index.html file if it doesn't recognize route
-//     const path = require('path');
+const path = require('path');
 //     app.get('*', (req, res) => {
 //         res.sendFile(path.resolve(__dirname, 'react-ui', 'build', 'index.html'));
 //     });
 // } else {
-app.use(express.static('react-ui/build'));
+app.use(express.static(path.join(__dirname, 'react-ui/build')));
+
 // }
 
 app.use('/api', apiRouter);
 app.get('/apa', (req, res, next) => {
     console.log("apa")
+});
+
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'react-ui/build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3001;
