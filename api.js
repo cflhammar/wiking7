@@ -2,8 +2,8 @@ const express = require('express');
 
 const apiRouter = express.Router();
 
-apiRouter.get('/api', (req, res, next) => {
-    return <h1>Hejsan!</h1>
+apiRouter.get('/', (req, res, next) => {
+    res.status(200).json({ hejsan: 'hejsan' })
 });
 
 

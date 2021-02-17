@@ -11,13 +11,14 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(errorhandler());
 app.use(morgan('dev'));
-app.use(express.static('build'));
+app.use(express.static('react-ui/build'));
 
 app.use('/api', apiRouter);
+app.get('/apa', (req, res, next) => {
+    console.log("apa")
+});
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log('Server started, listening on: ' + PORT);
 })
-
-module.exports = app;
