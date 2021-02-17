@@ -13,6 +13,19 @@ app.use(errorhandler());
 app.use(morgan('dev'));
 app.use(express.static('react-ui/build'));
 
+if (process.env.NODE_ENV === 'production') {
+    // Exprees will serve up production assets
+
+
+    // Express serve up index.html file if it doesn't recognize route
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+} else {
+    app.use(express.static('client/build'));
+}
+
 app.use('/api', apiRouter);
 app.get('/apa', (req, res, next) => {
     console.log("apa")
