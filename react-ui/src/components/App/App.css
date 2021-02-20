@@ -1,0 +1,51 @@
+
+.Full {
+  display: flex;
+  width: 100%;
+}
+
+.Full2 {
+  width: 100%;
+}
+
+.Data {
+  background-color: rgba(236, 170, 233, 0.719);
+  width: 100%;
+  display: inline-flex;
+}
+
+.data-inside {
+  display: block;
+  width: 25%;
+  text-align: center;
+}
+
+.Gameboard {
+  width: 100%;
+  background-color: rgba(76, 0, 130, 0.486);
+}
+
+.data-inside p {
+  font-weight: 700;
+  text-align: center;
+  margin: 0% 0%;
+  font-size: large  ;
+}
+
+
+.start-button {
+  background-color: rgb(177, 169, 169);
+  margin-top: 0%;
+  font-size: small;
+  width: 25%;
+
+  font-weight: 700;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 12px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+
+
+

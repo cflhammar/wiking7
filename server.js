@@ -3,12 +3,13 @@ const cors = require('cors');
 const errorhandler = require('errorhandler');
 const express = require('express');
 const morgan = require('morgan');
-const apiRouter = require('./api.js');
+const apiRouter = require('./api/api.js');
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(errorhandler());
 app.use(morgan('dev'));
 
@@ -32,6 +33,8 @@ app.get('/apa', (req, res, next) => {
     console.log("apa")
     res.sendStatus(200);
 });
+
+
 
 // app.get('*', function (req, res) {
 //     res.sendFile(path.join(__dirname, 'react-ui/build', 'index.html'));
