@@ -1,7 +1,7 @@
 import './App.css';
-import Board from '../Board/Board'
+import Board from '../Board/Board.js'
 import React from 'react';
-import HighScore from '../HighScore/HighScore'
+import HighScore from '../HighScore/HighScore.js'
 
 
 class App extends React.Component {
