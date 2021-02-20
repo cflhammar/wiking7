@@ -24,7 +24,7 @@ const path = require('path');
 //         res.sendFile(path.resolve(__dirname, 'react-ui', 'build', 'index.html'));
 //     });
 // } else {
-app.use(express.static(path.join(__dirname, 'react-ui/build')));
+app.use(express.static(path.join(__dirname, '/react-ui/build')));
 
 // }
 
