@@ -10,7 +10,7 @@ class HighScore extends React.Component {
             name: ''
         }
 
-        this.backendURL = 'http://localhost:3001/api'
+        this.backendURL = 'https://wiking7.herokuapp.com/'
 
         this.getHighScore = this.getHighScore.bind(this);
         this.renderToplist = this.renderToplist.bind(this);
@@ -19,7 +19,7 @@ class HighScore extends React.Component {
     }
 
     getHighScore() {
-        const url = this.backendURL + '/highScore'
+        const url = this.backendURL + 'api/highScore'
         fetch(url, { "headers": { "Content-Type": "application/json" } },)
             .then(response => {
                 return response.json()

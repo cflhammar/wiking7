@@ -1,5 +1,5 @@
 import React from 'react';
-//import './App.css';
+import './App.css';
 import Board from '../Board/Board.js'
 import HighScore from '../HighScore/HighScore.js'
 
