@@ -1,5 +1,5 @@
 import React from 'react';
-//import './HighScore.css';
+import './HighScore.css';
 
 class HighScore extends React.Component {
     constructor(props) {
