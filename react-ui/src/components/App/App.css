@@ -1,18 +1,25 @@
 
 .outerContainer {
   display: block;
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
+.gameContainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(76, 0, 130, 0.486);
+}
 
-.menuGameContainer {
-  display: inline-flex;
+
+.menuScoreContainer {
+  display: flex;
   width: 100%;
 }
 
 .menuContainer {
   background-color: rgba(236, 170, 233, 0.719);
-  width: 30%;
+  width: 25%;
   display: block;
   text-align: center;
 }
@@ -47,20 +54,9 @@
   font-size: x-small;
 }
 
-.gameContainer {
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(76, 0, 130, 0.486);
-}
-
 .highScoreContainer {
   background-color: rgba(236, 170, 233, 0.719);
   width: 100%;
   display: block;
   text-align: center;
 }
-
-
-
-

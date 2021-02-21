@@ -182,12 +182,16 @@ class App extends React.Component {
     this.setBoard();
   }
 
-
   render() {
-
     return (
       <div className='outerContainer' >
-        <div className='menuGameContainer'>
+
+        <div className='gameContainer'>
+          <Board onLoad={this.setBoard} onFlip={this.onFlip} cards={this.state.cards} />
+        </div>
+
+        <div className='menuScoreContainer'>
+
           <div className='menuContainer'>
             <button className='start-button' onClick={() => {
               this.setBoard()
@@ -206,14 +210,11 @@ class App extends React.Component {
               <p>{this.lowestScore ? this.lowestScore : '-'}</p>
             </div>
           </div>
-
-          <div className='gameContainer'>
-            <Board onLoad={this.setBoard} onFlip={this.onFlip} cards={this.state.cards} />
+          <div className='highScoreContainer'>
+            <HighScore addHighScore={this.putHighScore} />
           </div>
         </div>
-        <div className='highScoreContainer'>
-          <HighScore addHighScore={this.putHighScore} />
-        </div>
+
       </div>
     );
   }

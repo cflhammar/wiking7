@@ -5,7 +5,7 @@ class Card extends React.Component {
     constructor(props) {
         super(props)
 
-        this.classes = ['card', this.props.card.isFlipped, this.props.card.found]
+        this.classes = 'card' //, this.props.card.isFlipped, this.props.card.found]
 
         this.renderCard = this.renderCard.bind(this);
         this.flipCard = this.flipCard.bind(this);
@@ -25,7 +25,7 @@ class Card extends React.Component {
     }
 
     handleStyle() {
-        let style = { color: 'grey' }
+        let style = { color: 'black', height: '100px', fontSize: '50px' }
         if (this.props.card.isFlipped) {
             style.color = 'white';
             style.backgroundColor = 'rgba(230,230,230,0.3)';
