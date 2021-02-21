@@ -186,33 +186,34 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className='Full' >
-        <div className='Full2'>
-
-          <div className='Data'>
+      <div className='outerContainer' >
+        <div className='menuGameContainer'>
+          <div className='menuContainer'>
             <button className='start-button' onClick={() => {
               this.setBoard()
             }
-            }>Restart Game</button>
-            <div className='data-inside'>
+            }>Restart</button>
+            <div className='dataBar'>
               <p>Correct:</p>
               <p> {this.foundCorrect} / 8</p>
             </div>
-            <div className='data-inside'>
+            <div className='dataBar'>
               <p>Round:</p>
               <p> {this.numRounds}</p>
             </div>
-            <div className='data-inside'>
+            <div className='dataBar'>
               <p>Best score: </p>
-              <p>{this.lowestScore}</p>
+              <p>{this.lowestScore ? this.lowestScore : '-'}</p>
             </div>
           </div>
 
-          <div className='Gameboard'>
+          <div className='gameContainer'>
             <Board onLoad={this.setBoard} onFlip={this.onFlip} cards={this.state.cards} />
           </div>
         </div>
-        <HighScore addHighScore={this.putHighScore} />
+        <div className='highScoreContainer'>
+          <HighScore addHighScore={this.putHighScore} />
+        </div>
       </div>
     );
   }

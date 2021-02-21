@@ -41,7 +41,6 @@ class HighScore extends React.Component {
         } else {
             alert('Enter name before submitting!')
         }
-
     }
 
     renderToplist() {

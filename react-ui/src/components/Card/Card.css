@@ -1,9 +1,17 @@
-th {
-    margin: auto;
-    width: 25%;
+.cardContainer {
+ width: 25%;
+ text-align: center;
+ margin: 1%;
+ padding: 0%;
+ border: 1px solid black;
+ position: relative;
 }
 
-img{
-    width: auto;
-    height: 3cm;
+.card{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
+

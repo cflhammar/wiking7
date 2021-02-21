@@ -1,4 +1,4 @@
-import './App.css';
+//import './App.css';
 import Board from '../Board/Board.js'
 import React from 'react';
 import HighScore from '../HighScore/HighScore.js'

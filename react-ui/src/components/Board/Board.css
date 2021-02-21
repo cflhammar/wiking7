@@ -1,3 +1,9 @@
-.Board {
-    width: 100%;
+.RowContainer {
+    display: block;
+    height: 100%;
 }
+
+.rowCardContainer {
+    display: flex;
+    height: 25%;
+}   
