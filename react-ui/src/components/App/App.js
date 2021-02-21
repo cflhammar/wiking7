@@ -1,7 +1,7 @@
 import React from 'react';
 //import './App.css';
-//import Board from '../Board/Board.js'
-//import HighScore from '../HighScore/HighScore.js'
+import Board from '../Board/Board.js'
+import HighScore from '../HighScore/HighScore.js'
 
 
 class App extends React.Component {
@@ -209,10 +209,10 @@ class App extends React.Component {
           </div>
 
           <div className='Gameboard'>
-            {/* <Board onLoad={this.setBoard} onFlip={this.onFlip} cards={this.state.cards} /> */}
+            <Board onLoad={this.setBoard} onFlip={this.onFlip} cards={this.state.cards} />
           </div>
         </div>
-        {/* <HighScore addHighScore={this.putHighScore} /> */}
+        <HighScore addHighScore={this.putHighScore} />
       </div>
     );
   }
