@@ -7,7 +7,7 @@ class HighScore extends React.Component {
 
         this.state = {
             toplist: [],
-            //name: ''
+            name: ''
         }
 
         this.backendURL = 'https://wiking7.herokuapp.com/'
