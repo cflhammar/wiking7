@@ -8,7 +8,7 @@ const pool = new Pool({
         rejectUnauthorized: false
     }
 });
-//client.connect();
+client.connect();
 
 // let highScore = [{ name: 'backend', score: 10 }, { name: 'backend', score: 20 }]
 //let test;
@@ -32,10 +32,8 @@ let highScoreRouter = express.Router({ mergeParams: true });
 // }
 
 highScoreRouter.get('/', async (req, res, next) => {
-    const client = await pool.connect();
     const result = await client.query('SELECT * FROM Toplist;');
     res.status(200).json(result.rows);
-    pool.end();
 });
 
 // highScoreRouter.get('/test', (req, res, next) => {
