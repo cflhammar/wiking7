@@ -20,7 +20,7 @@ apiRouter.use('/highScore', highScoreRouter);
 apiRouter.get('/pg', async (req, res, next) => {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM test_table');
-    console.log("success!")
+    console.log(result.json())
 })
 
 
