@@ -1,39 +1,41 @@
 const express = require('express');
 // const { Pool } = require('pg');
 
-// const client = new Client({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
+const { Pool } = require('pg');
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+//client.connect();
 
-// client.connect();
-
-let highScore = [{ name: 'backend', score: 10 }, { name: 'backend', score: 20 }]
+// let highScore = [{ name: 'backend', score: 10 }, { name: 'backend', score: 20 }]
 //let test;
 
 let highScoreRouter = express.Router({ mergeParams: true });
 //highScoreRouter.use(bodyParser.urlencoded({ extended: true }));
 //highScoreRouter.use(bodyParser.json());
 
-const sort = () => {
-    highScore = highScore.sort(function (a, b) {
-        var x = a.score; var y = b.score;
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
-}
+// const sort = () => {
+//     highScore = highScore.sort(function (a, b) {
+//         var x = a.score; var y = b.score;
+//         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+//     });
+// }
 
-const adjustLength = () => {
-    const length = highScore.length;
-    if (length > 10) {
-        highScore = highScore.slice(0, 10)
-    }
-}
+// const adjustLength = () => {
+//     const length = highScore.length;
+//     if (length > 10) {
+//         highScore = highScore.slice(0, 10)
+//     }
+// }
 
-highScoreRouter.get('/', (req, res, next) => {
-    console.log("getting")
-    res.send(highScore);
+highScoreRouter.get('/', async (req, res, next) => {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM Toplist;');
+    res.status(200).json(result.rows);
+    pool.end();
 });
 
 // highScoreRouter.get('/test', (req, res, next) => {
