@@ -8,7 +8,7 @@ const pool = new Pool({
         rejectUnauthorized: false
     }
 });
-const client = pool.connect();
+
 
 const apiRouter = express.Router();
 apiRouter.get('/', (req, res, next) => {
@@ -19,10 +19,9 @@ const highScoreRouter = require('./highScore.js');
 apiRouter.use('/highScore', highScoreRouter);
 
 apiRouter.get('/pg', async (req, res, next) => {
-    client.query('SELECT * FROM test_table', (err, result) => {
-        res.status(200).json(result);
-    });
-
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM test_table;');
+    res.status(200).json(result);
 })
 
 
