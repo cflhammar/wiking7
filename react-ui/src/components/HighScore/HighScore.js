@@ -7,7 +7,7 @@ class HighScore extends React.Component {
 
         this.state = {
             toplist: [],
-            name: ''
+            //name: ''
         }
 
         this.backendURL = 'https://wiking7.herokuapp.com/'
@@ -50,7 +50,8 @@ class HighScore extends React.Component {
             return (<tr key={index}>
                 <td key={index + 1}>{index + 1}</td>
                 <td key={index + 2} className='table-name'>{entry.name}</td>
-                <td key={index + 3} >{entry.score}</td>
+                <td key={index + 3} >{entry.rounds}</td>
+                <td key={index + 3} >{entry.time}</td>
             </tr>)
         }
         )
