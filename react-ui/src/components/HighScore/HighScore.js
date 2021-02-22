@@ -43,7 +43,7 @@ class HighScore extends React.Component {
         }
     }
 
-    renderToplist() {
+    renderToplist(name) {
         const highScore = this.state.toplist;
         const toplist = highScore.map((entry, index) => {
 
@@ -57,7 +57,7 @@ class HighScore extends React.Component {
 
         return (
             <table className='toplistTable' >
-                <thead><tr><th>Pos</th><th>Name</th><th>Score</th></tr></thead>
+                <thead><tr><th>Pos</th><th>Name</th><th>{name}</th></tr></thead>
                 <tbody>{toplist}</tbody>
             </table>)
     }
@@ -79,12 +79,24 @@ class HighScore extends React.Component {
                         placeholder="Enter your name"
                         onChange={this.handleNameChange}
                     />
-                    <button type='submit' onClick={this.addHighScore}>Add Score</button>
+                    <button type='submit' onClick={this.addHighScore}>Save Result</button>
 
                 </div>
-                <h3>Toplist:</h3>
-                {this.renderToplist()}
 
+                <div className='outerToplistContainer'>
+
+                    <div className='toplistContainer'>
+                        <div className='toplistRound'>
+                            <h4>Fewest Rounds</h4>
+                            {this.renderToplist('Rounds')}
+                        </div>
+                        <div className='toplistTime'>
+                            <h4>Fastest Time</h4>
+                            {this.renderToplist('Time')}
+                        </div>
+
+                    </div>
+                </div>
             </div>
         )
     }

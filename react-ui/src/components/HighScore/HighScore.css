@@ -1,23 +1,48 @@
 .toplist {
-    background-color:rgba(236, 170, 233, 0.719);
+    background-color:rgba(245, 234, 244, 0.719);
     text-align: center;
     font-size: x-small;
     font-weight: 700;
     height: 100%;
     width: 100%;
+    display: flex;
 }
+
+h4 {
+    margin: 0;
+}
+
+.toplistRound {
+    width: 50%;
+    border: 2px solid black;
+}
+
+.toplistTime {
+    width: 50%;
+    border: 2px solid black;
+}
+
 
 h3 {
     margin-bottom: 1%;
     border-bottom: 2px solid rgba(189, 135, 194, 0.897);
     margin-top:1%;
-    font-size: x-large;
+    font-size: large;
+}
+.outerToplistContainer {
+    width: 100%;
+}
+
+
+.toplistContainer {
+    display: flex;
+    width: 100%;
 }
 
 .toplistTable {
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 50%;
 }
 
 .toplistTable .table-name {
@@ -25,12 +50,16 @@ h3 {
 }
 
 .input {
-    display: flex;
+    display: block;
+    width: 50%;
+    border: 2px solid black;
+    align-items: center;
+    align-content: center;
 }
 
 .toplist input {
     display: flex;
-    width: 60%;
+    width: 90%;
     padding-top: 1%;
     padding-bottom: 1%;
     border-radius: 12px;
@@ -43,7 +72,7 @@ h3 {
 .toplist button {
     background-color: rgb(177, 169, 169);
     margin-top: 0%;
-    width: 30%;
+    width: 90%;
     height: auto;
     font-weight: 700;
     font-size: x-small;

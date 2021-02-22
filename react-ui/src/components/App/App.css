@@ -9,19 +9,21 @@
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(76, 0, 130, 0.486);
+  border: 2px solid black;
 }
 
 
 .menuScoreContainer {
-  display: flex;
+  display: block;
   width: 100%;
 }
 
 .menuContainer {
   background-color: rgba(236, 170, 233, 0.719);
-  width: 25%;
-  display: block;
+  width: 100%;
+  display: inline-flex;
   text-align: center;
+  border: 2px solid black;
 }
 
 .start-button {
@@ -39,11 +41,11 @@
 
 .dataBar {
   display: block;
-  width: 90%;
+  width: 100%;
   text-align: center;
   border: 1px solid black;
   border-radius: 15px;
-  margin: 3%;
+  margin: 1% 1%;
 }
 
 .dataBar p {
@@ -57,6 +59,7 @@
 .highScoreContainer {
   background-color: rgba(236, 170, 233, 0.719);
   width: 100%;
-  display: block;
+  display: inline-flex;
   text-align: center;
+  border: 2px solid black;
 }

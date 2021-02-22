@@ -21,7 +21,9 @@ class App extends React.Component {
     this.foundCorrect = 0;
     this.flippedCards = 0;
     this.numRounds = 0;
-    this.lowestScore = '';
+    this.lowestScore = '-';
+
+
 
     this.onFlip = this.onFlip.bind(this);
     this.setBoard = this.setBoard.bind(this);
@@ -193,18 +195,30 @@ class App extends React.Component {
         <div className='menuScoreContainer'>
 
           <div className='menuContainer'>
-            <button className='start-button' onClick={() => {
+            <div className='dataBar'>            <button className='start-button' onClick={() => {
               this.setBoard()
             }
             }>Restart</button>
-            <div className='dataBar'>
-              <p>Correct:</p>
-              <p> {this.foundCorrect} / 8</p>
             </div>
+
+            <div className='dataBar'>
+              <p>Time:</p>
+              <p> 00</p>
+            </div>
+
+
             <div className='dataBar'>
               <p>Round:</p>
               <p> {this.numRounds}</p>
             </div>
+
+            <div className='dataBar'>
+              <p>Correct:</p>
+              <p> {this.foundCorrect} / 8</p>
+            </div>
+
+
+
             <div className='dataBar'>
               <p>Best score: </p>
               <p>{this.lowestScore ? this.lowestScore : '-'}</p>

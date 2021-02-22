@@ -1,5 +1,14 @@
 const express = require('express');
+const { Pool } = require('pg');
 
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
+
+client.connect();
 
 let highScore = [{ name: 'backend', score: 10 }, { name: 'backend', score: 20 }]
 //let test;
@@ -24,6 +33,17 @@ const adjustLength = () => {
 
 highScoreRouter.get('/', (req, res, next) => {
     console.log("getting")
+    res.send(highScore);
+});
+
+highScoreRouter.get('/test', (req, res, next) => {
+    client.query('SELECT * FROM test_table;', (err, res) => {
+        if (err) {
+            throw err;
+        } else {
+            console.log(res.json())
+        }
+    })
     res.send(highScore);
 });
 

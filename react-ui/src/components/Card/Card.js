@@ -25,7 +25,7 @@ class Card extends React.Component {
     }
 
     handleStyle() {
-        let style = { color: 'black', height: '100px', fontSize: '50px' }
+        let style = { color: 'black', height: '100px', fontSize: '50px', backgroundColor: 'rgba(200,200,200,0.1)' }
         if (this.props.card.isFlipped) {
             style.color = 'white';
             style.backgroundColor = 'rgba(230,230,230,0.3)';
