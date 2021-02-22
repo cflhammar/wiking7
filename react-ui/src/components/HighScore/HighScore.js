@@ -24,7 +24,7 @@ class HighScore extends React.Component {
             .then(response => {
                 return response.json()
             }).then(jsonData => {
-                //   console.log(jsonData)
+                console.log(jsonData)
                 this.setState({
                     toplist: jsonData
                 }
@@ -49,7 +49,7 @@ class HighScore extends React.Component {
 
             return (<tr key={index}>
                 <td key={index + 1}>{index + 1}</td>
-                <td key={index + 2} className='table-name'>{entry.name}</td>
+                <td key={index + 2} >{entry.name}</td>
                 <td key={index + 3} >{entry.rounds}</td>
                 <td key={index + 3} >{entry.time}</td>
             </tr>)
