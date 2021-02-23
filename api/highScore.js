@@ -1,10 +1,14 @@
 const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config();
 // const { Pool } = require('pg');
 
 const { Pool } = require('pg');
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
+        ssl: true,
         rejectUnauthorized: false
     }
 });
@@ -13,7 +17,7 @@ const client = pool.connect();
 // let highScore = [{ name: 'backend', score: 10 }, { name: 'backend', score: 20 }]
 //let test;
 
-let highScoreRouter = express.Router({ mergeParams: true });
+highScoreRouter = express.Router({ mergeParams: true });
 //highScoreRouter.use(bodyParser.urlencoded({ extended: true }));
 //highScoreRouter.use(bodyParser.json());
 
@@ -34,7 +38,6 @@ let highScoreRouter = express.Router({ mergeParams: true });
 highScoreRouter.get('/', async (req, res, next) => {
     const result = await client.query('SELECT * FROM Toplist;');
     res.status(200).json(result.rows);
-
 });
 
 // highScoreRouter.get('/test', (req, res, next) => {
@@ -46,15 +49,15 @@ highScoreRouter.get('/', async (req, res, next) => {
 //         }
 //     })
 //     res.send(highScore);
-// });
+// // });
 
-highScoreRouter.post('/', (req, res, next) => {
-    const newEntry = req.body;
-    console.log(newEntry);
-    highScore.push(newEntry);
-    sort();
-    adjustLength();
-    res.status(201).send(highScore);
-});
+// highScoreRouter.post('/', (req, res, next) => {
+//     const newEntry = req.body;
+//     console.log(newEntry);
+//     highScore.push(newEntry);
+//     sort();
+//     adjustLength();
+//     res.status(201).send(highScore);
+// });
 
 module.exports = highScoreRouter;
