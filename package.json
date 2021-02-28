@@ -8,7 +8,7 @@
     "start": "node server.js",
     "start-backend": "nodemon ./backend/backend.js",
     "deploy": "git add . && git commit -m \"deploy\" && git push -u origin main",
-    "build": "cd react-ui && npm run build && cd.."
+    "build-ui": "cd react-ui && npm run build && cd.."
   },
   "repository": {
     "type": "git",
