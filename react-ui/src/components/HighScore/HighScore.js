@@ -1,16 +1,18 @@
 import React from 'react';
 import './HighScore.css';
+const dotenv = require('dotenv');
+dotenv.config();
 
 class HighScore extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            toplist: [],
+            toplist: { rounds: '', time: '' },
             name: ''
         }
 
-        this.backendURL = 'https://wiking7.herokuapp.com/'
+        this.backendURL = false ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
 
         this.getHighScore = this.getHighScore.bind(this);
         this.renderToplist = this.renderToplist.bind(this);
@@ -19,18 +21,16 @@ class HighScore extends React.Component {
     }
 
     getHighScore() {
-        const url = this.backendURL + 'api/highScore'
+        const url = this.backendURL + 'api/highScore';
         fetch(url, { "headers": { "Content-Type": "application/json" } },)
             .then(response => {
                 return response.json()
             }).then(jsonData => {
-                console.log(jsonData)
                 this.setState({
                     toplist: jsonData
-                }
-                )
-            }
-            );
+                })
+
+            });
     }
 
     addHighScore() {
@@ -43,24 +43,26 @@ class HighScore extends React.Component {
         }
     }
 
-    renderToplist(name) {
-        const highScore = this.state.toplist;
-        const toplist = highScore.map((entry, index) => {
+    renderToplist(type) {
+        const highScore = this.state.toplist[type];
+        if (highScore) {
+            const toplist = highScore.map((entry, index) => {
+                return (<tr key={index}>
+                    <td key={index + 1}>{index + 1}</td>
+                    <td key={index + 2} >{entry.name}</td>
+                    <td key={index + 3} >{entry.rounds}</td>
+                    <td key={index + 4} >{entry.time}</td>
+                </tr>)
+            })
 
-            return (<tr key={index}>
-                <td key={index + 1}>{index + 1}</td>
-                <td key={index + 2} >{entry.name}</td>
-                <td key={index + 3} >{entry.rounds}</td>
-                <td key={index + 3} >{entry.time}</td>
-            </tr>)
+            return (
+                <table className='toplistTable' >
+                    <thead><tr><th>Pos</th><th>Name</th><th>Rounds</th><th>Time</th></tr></thead>
+                    <tbody>{toplist}</tbody>
+                </table>)
+        } else {
+            return 'waiting on server';
         }
-        )
-
-        return (
-            <table className='toplistTable' >
-                <thead><tr><th>Pos</th><th>Name</th><th>{name}</th></tr></thead>
-                <tbody>{toplist}</tbody>
-            </table>)
     }
 
     handleNameChange(e) {
@@ -89,11 +91,11 @@ class HighScore extends React.Component {
                     <div className='toplistContainer'>
                         <div className='toplistRound'>
                             <h4>Fewest Rounds</h4>
-                            {this.renderToplist('Rounds')}
+                            {this.renderToplist('rounds')}
                         </div>
                         <div className='toplistTime'>
                             <h4>Fastest Time</h4>
-                            {this.renderToplist('Time')}
+                            {this.renderToplist('time')}
                         </div>
 
                     </div>
