@@ -41,7 +41,7 @@ class App extends React.Component {
   putHighScore(name) {
     if (this.foundCorrect < 8) {
 
-      const backendURL = true ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
+      const backendURL = false ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
       console.log(backendURL)
       const url = backendURL + 'api/highScore';
       const newEntry = JSON.stringify({ name: name, score: this.numRounds, time: 50 });
