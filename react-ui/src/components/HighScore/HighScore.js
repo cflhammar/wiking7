@@ -12,7 +12,7 @@ class HighScore extends React.Component {
             name: ''
         }
 
-        this.backendURL = false ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
+        this.backendURL = true ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
 
         this.getHighScore = this.getHighScore.bind(this);
         this.renderToplist = this.renderToplist.bind(this);

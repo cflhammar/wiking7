@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Board from '../Board/Board.js'
-import HighScore from '../HighScore/HighScore.js'
+import HighScore from '../HighScore/HighScore.js';
 
 
 class App extends React.Component {
@@ -15,15 +15,14 @@ class App extends React.Component {
         isFlipped: false,
         found: false,
       }],
-
+      time: 0
     }
 
     this.foundCorrect = 0;
     this.flippedCards = 0;
     this.numRounds = 0;
     this.lowestScore = '-';
-
-
+    this.posted = false;
 
     this.onFlip = this.onFlip.bind(this);
     this.setBoard = this.setBoard.bind(this);
@@ -35,16 +34,15 @@ class App extends React.Component {
     this.updateScore = this.updateScore.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.putHighScore = this.putHighScore.bind(this);
-
   }
 
   putHighScore(name) {
-    if (this.foundCorrect < 8) {
+    if (this.foundCorrect === 8 && !this.posted) {
 
-      const backendURL = false ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
+      const backendURL = true ? 'http://localhost:5000/' : 'https://wiking7.herokuapp.com/';
       console.log(backendURL)
       const url = backendURL + 'api/highScore';
-      const newEntry = JSON.stringify({ name: name, score: this.numRounds, time: 50 });
+      const newEntry = JSON.stringify({ name: name, score: this.numRounds, time: this.state.time });
       console.log('posting front');
       console.log(newEntry);
       fetch(url, {
@@ -52,15 +50,12 @@ class App extends React.Component {
         body: newEntry,
         headers: { 'Content-Type': 'application/json' }
       })
-      this.setBoard();
-    } else {
+      this.posted = true;
+    } else if (this.foundCorrect < 8) {
       alert('You must finish the game before submitting score!')
+    } else if (this.posted) {
+      alert('Already posted!')
     }
-    //.then(() => {
-
-    //this.getHighScore();
-    //this.setState({ name: '' });
-    //})
 
   }
 
@@ -77,6 +72,10 @@ class App extends React.Component {
     this.foundCorrect = 0;
     this.flippedCards = 0;
     this.numRounds = 0;
+    this.posted = false;
+    clearInterval(this.interval);
+    this.setState({ time: 0 });
+    this.interval = setInterval(() => this.setState({ time: this.state.time + 1 }), 1000);
   }
 
 
@@ -130,6 +129,7 @@ class App extends React.Component {
 
   checkFinished() {
     if (this.foundCorrect === 8) {
+      clearInterval(this.interval);
       this.updateScore();
     }
   }
@@ -206,7 +206,7 @@ class App extends React.Component {
 
             <div className='dataBar'>
               <p>Time:</p>
-              <p> 00</p>
+              <p> {this.state.time}</p>
             </div>
 
 
@@ -219,8 +219,6 @@ class App extends React.Component {
               <p>Correct:</p>
               <p> {this.foundCorrect} / 8</p>
             </div>
-
-
 
             <div className='dataBar'>
               <p>Best score: </p>
