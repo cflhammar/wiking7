@@ -73,10 +73,6 @@ class HighScore extends React.Component {
         this.getHighScore();
     }
 
-    componentDidUpdate() {
-        this.getHighScore();
-    }
-
     render() {
 
         return (
