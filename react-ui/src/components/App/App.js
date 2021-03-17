@@ -106,8 +106,6 @@ class App extends React.Component {
         //        // flip one card
         this.setState({    // update state
           cards: cardsArray,
-        }, () => {
-          console.log('card flipped');
         });
       }
     }
