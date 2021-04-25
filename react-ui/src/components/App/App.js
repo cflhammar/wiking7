@@ -75,7 +75,7 @@ class App extends React.Component {
     this.posted = false;
     clearInterval(this.interval);
     this.setState({ time: 0 });
-    this.interval = setInterval(() => this.setState({ time: this.state.time + 1 }), 1000);
+    this.interval = setInterval(() => this.setState({ time: this.state.time + 0.01 }), 10);
   }
 
 
