@@ -75,7 +75,12 @@ class App extends React.Component {
     this.posted = false;
     clearInterval(this.interval);
     this.setState({ time: 0 });
-    this.interval = setInterval(() => this.setState({ time: this.state.time + 0.01 }), 10);
+    this.interval = setInterval(() => {
+      let temptime = Math.round((this.state.time + 0.01) * 100) / 100;
+      this.setState({ time: temptime })
+    }, 10);
+
+
   }
 
 
@@ -204,7 +209,7 @@ class App extends React.Component {
 
             <div className='dataBar'>
               <p>Time:</p>
-              <p> {this.state.time}</p>
+              <p> {this.state.time.toFixed(2)}</p>
             </div>
 
 
